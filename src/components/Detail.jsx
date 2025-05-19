@@ -40,7 +40,7 @@ export default function Detail({isExpense, setIsDetailModalOpen, dataToShow}) {
                     {isExpense ? (
                     <div className="mb-4 w-full">
                         <label htmlFor="category" className="block text-base font-medium text-gray-700">Category</label>
-                        <select readOnly value={dataa.category} name="category" id="category" className="mt-1 px-2 h-10 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-ft-primary focus:border-ft-primary" >
+                        <select disabled value={dataa.category} name="category" id="category" className="mt-1 px-2 h-10 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-ft-primary focus:border-ft-primary" >
                             <option value="0" disabled>Select Category</option>
                             <option value="food">Food</option>
                             <option value="transport">Transport</option>

@@ -8,7 +8,7 @@ export default function WelcomeBanner() {
 
     const [username, setUsername] = useState(function() {
         const storedUsername = localStorage.getItem('username');
-        return storedUsername ? JSON.parse(storedUsername) : 'FinTrack User';
+        return storedUsername ? JSON.parse(storedUsername) : 'User';
     });
     const [showEdit, setShowEdit] = useState(false);
     const [editName, setEditName] = useState(username);
@@ -28,6 +28,18 @@ export default function WelcomeBanner() {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [showEdit]);
 
+    const handleUsernameChange = (e) => {
+      if (editName.length > 20) {
+        setEditName(editName.slice(0, 20));
+        alert("Username cannot exceed 20 characters");
+        return;
+      }
+      if (editName.length < 3) {
+        setEditName("User");
+        alert("Username must be at least 3 characters");
+        return;
+      }
+    }
     return (
         <section id="home" className="w-full h-20 group bg-ft-primary/90 border-t-2 border-t-ft-accent rounded-md flex flex-col items-center justify-center relative mb-10">
           <h1 className="text-2xl font-medium text-ft-accent">Welcome <b>{username}</b></h1>
@@ -50,11 +62,13 @@ export default function WelcomeBanner() {
                 type="text"
                 className="border rounded px-2 py-1 text-sm"
                 value={editName}
+                autoCapitalize="on"
                 onChange={e => setEditName(e.target.value)}
                 autoFocus
               />
               <button
                 type="submit"
+                onClick={handleUsernameChange}
                 className="bg-ft-accent text-ft-bg px-2 py-1 rounded text-sm "
               >
                 Save

@@ -81,7 +81,7 @@ export default function EditModal({isExpense, setIsEditModalOpen, dataToEdit, sa
                     <div className="mb-4 w-full">
                         <label htmlFor="category" className="block text-base font-medium text-gray-700">Category</label>
                         <select onChange={handleChange} value={dataa.category} name="category" id="category" className="mt-1 px-2 h-10 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-ft-primary focus:border-ft-primary" >
-                            <option value="0" selected disabled>Select Category</option>
+                            <option value="0" disabled>Select Category</option>
                             <option value="food">Food</option>
                             <option value="transport">Transport</option>
                             <option value="entertainment">Entertainment</option>
@@ -99,8 +99,8 @@ export default function EditModal({isExpense, setIsEditModalOpen, dataToEdit, sa
                     </div>
                     <div className="mb-4 w-full">
                         <label htmlFor="description" className="block text-base font-medium text-gray-700">Description</label>
-                        <textarea id="description" name="description" onChange={handleChange} className="mt-1 py-2 px-2 min-h-20 max-h-40 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-ft-primary focus:border-ft-primary">
-                            {dataa.description}
+                        <textarea id="description" value={dataa.description} name="description" onChange={handleChange} className="mt-1 py-2 px-2 min-h-20 max-h-40 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-ft-primary focus:border-ft-primary">
+                            
                         </textarea>
                     </div>
                     <button type="button" onClick={handleEdit} className="w-full bg-ft-primary text-white py-2 rounded-md hover:bg-ft-primary/90 transition duration-200">Save Changes</button>

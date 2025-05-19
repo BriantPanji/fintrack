@@ -6,7 +6,7 @@ export default function Income({ saveIncome }) {
     
     const [incomeData, setIncomeData] = useState({
         income: 0,
-        date: '0',
+        date: new Date().toISOString().slice(0, 10),
         description: "",
     });
 
@@ -14,7 +14,7 @@ export default function Income({ saveIncome }) {
     const resetIncomeData = () => {
         setIncomeData(() => { return {
             income: 0,
-            date: '0',
+            date: new Date().toISOString().slice(0, 10),
             description: "",
         }})
     }

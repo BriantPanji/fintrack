@@ -1,12 +1,7 @@
 // import { useState } from "react"
 
-import { useEffect } from "react"
 
 export default function Summary({formatRupiah, summary}) {
-
-    useEffect(() => {
-        console.log("TES SAT",summary);
-    }, [summary]);
 
     const totalBalance = summary.totalIncome - summary.totalExpense;
     
