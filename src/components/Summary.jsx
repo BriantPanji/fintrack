@@ -10,7 +10,7 @@ export default function Summary({formatRupiah, summary}) {
             <h1 className="text-2xl font-bold mb-2 text-ft-primary">Summary</h1>
             <div className="w-full flex flex-col items-center lg:flex-row gap-3">
                 <div className="w-full flex flex-col bg-white border-l-3 border rounded-md px-2 py-1 border-cyan-800 text-cyan-800">
-                    <h6 className="font-medium text-lg">Income Expense:</h6>
+                    <h6 className="font-medium text-lg">Income Total:</h6>
                     <span className="font-medium">{formatRupiah(summary.totalIncome)}</span>
                 </div>
                 <div className="w-full flex flex-col bg-white border-l-3 border border-rose-900 text-rose-900 rounded-md px-2 py-1">
