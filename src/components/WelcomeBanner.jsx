@@ -28,7 +28,7 @@ export default function WelcomeBanner() {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [showEdit]);
 
-    const handleUsernameChange = (e) => {
+    const handleUsernameChange = () => {
       if (editName.length > 20) {
         setEditName(editName.slice(0, 20));
         alert("Username cannot exceed 20 characters");

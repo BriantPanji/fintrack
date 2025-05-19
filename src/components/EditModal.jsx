@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 
-export default function EditModal({isExpense, setIsEditModalOpen, dataToEdit, saveExpense, saveIncome}) {
+export default function EditModal({isExpense, setIsEditModalOpen, dataToEdit, saveExpense, saveIncome, setListHistory}) {
 
     const [dataa, setData] = useState(dataToEdit);
     const handleChange = (event) => {
@@ -27,16 +27,23 @@ export default function EditModal({isExpense, setIsEditModalOpen, dataToEdit, sa
         }
         if (confirm("Are you sure you want to edit this transaction?") === false) return;
 
-        let incomes = JSON.parse(localStorage.getItem("incomes") || "[]");
-        let expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
-
-        if (isExpense) {
-            expenses = expenses.map((item) => item.id === dataa.id ? dataa : item);
-            localStorage.setItem("expenses", JSON.stringify(expenses));
-        } else {
-            incomes = incomes.map((item) => item.id === dataa.id ? dataa : item);
-            localStorage.setItem("incomes", JSON.stringify(incomes));
-        }
+        setListHistory((prev) => {
+            const newList = [...prev];
+            const index = newList.findIndex(item => item.date === dataToEdit.date && item.description === dataToEdit.description);
+            if (index !== -1) {
+                newList[index] = dataa;
+            }
+            // Pisahkan income dan expense
+            const incomeList = newList.filter(item => item.income);
+            const expenseList = newList.filter(item => item.expense);
+            // Update localStorage langsung
+            localStorage.setItem("incomes", JSON.stringify(incomeList));
+            localStorage.setItem("expenses", JSON.stringify(expenseList));
+            // Reset summary agar App akan hitung ulang
+            saveIncome(false);
+            saveExpense(false);
+            return newList;
+        });
 
         saveExpense(false);
         saveIncome(false);

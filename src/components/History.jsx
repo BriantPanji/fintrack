@@ -143,7 +143,7 @@ export default function History({incomes, expenses, saveExpense, saveIncome, for
                 </table>
             </div>
             {isEditModalOpen ? (
-                <EditModal isExpense={isDataExpense} setIsEditModalOpen={setIsEditModalOpen} dataToEdit={dataToEdit} saveExpense={saveExpense} saveIncome={saveIncome} />
+                <EditModal isExpense={isDataExpense} setIsEditModalOpen={setIsEditModalOpen} dataToEdit={dataToEdit} saveExpense={saveExpense} saveIncome={saveIncome} expenses={expenses} incomes={incomes} setListHistory={setListHistory} listHistory={listHistory} />
             ): (<></>)}
             {isDetailModalOpen ? (
                 <Detail isExpense={isDataExpense} setIsDetailModalOpen={setIsDetailModalOpen} dataToShow={dataToEdit}  />
